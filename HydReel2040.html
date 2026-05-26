@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="pageTitle">ReeltyHyd — Hyderabad Real Estate Influencers</title>
+  <meta name="description" content="Discover the latest Hyderabad real estate videos from top social media influencers."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0a0f;--bg2:#141420;--bg3:#1c1c2e;--card:#1a1a2e;--blue:#4a9eff;--blue2:#1e6abf;--blue3:#0d3d7a;--text:#ffffff;--muted:#aaaacc;--border:#2a2a4a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#2a4a7a;border-radius:3px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;padding:0 4vw;height:68px;transition:background .4s}
+.navbar.scrolled{background:rgba(10,10,15,.97);box-shadow:0 2px 20px rgba(0,0,0,.6)}
+.navbar::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,15,.9) 0%,transparent 100%);pointer-events:none;z-index:-1}
+.nav-logo{font-size:1.6rem;font-weight:900;color:var(--blue);text-decoration:none;letter-spacing:-1px;margin-right:2.5rem;flex-shrink:0;cursor:pointer;user-select:none}
+.nav-logo span{color:#fff}
+.nav-links{display:flex;gap:1.4rem;list-style:none;flex:1}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-search-wrap{display:flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.nav-search-wrap:focus-within{border-color:var(--blue)}
+.nav-search-wrap input{background:none;border:none;outline:none;color:#fff;padding:.4rem .8rem;font-family:'Inter',sans-serif;font-size:.82rem;width:180px}
+.nav-search-wrap input::placeholder{color:rgba(255,255,255,.4)}
+.nav-search-wrap button{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.5);padding:.4rem .7rem;font-size:.85rem;transition:color .2s}
+.nav-search-wrap button:hover{color:var(--blue)}
+.btn-submit{background:var(--blue);color:#fff;border:none;padding:.45rem 1.1rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-submit:hover{background:var(--blue2)}
+
+/* HERO */
+.hero{position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;padding:0 4vw 5vw;overflow:hidden}
+.hero-bg-video{position:absolute;inset:0;z-index:0;background:var(--bg2)}
+.hero-bg-video iframe{width:100%;height:100%;border:none;pointer-events:none;transform:scale(1.05)}
+.hero-overlay-bottom{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg) 0%,transparent 100%);z-index:1}
+.hero-overlay-left{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,15,.85) 0%,rgba(10,10,15,.4) 50%,transparent 75%);z-index:1}
+.hero-overlay-top{position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(to bottom,rgba(10,10,15,.6) 0%,transparent 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:.3rem .9rem;border-radius:4px;margin-bottom:1.1rem}
+.hero-badge::before{content:'▶';font-size:.6rem}
+.hero h1{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:900;line-height:1.05;margin-bottom:1rem;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+.hero p{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:1.75rem;max-width:460px;text-shadow:0 1px 10px rgba(0,0,0,.9);font-weight:400}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-play{display:flex;align-items:center;gap:8px;background:#fff;color:#000;border:none;padding:.7rem 1.8rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s,transform .1s}
+.btn-play:hover{background:rgba(255,255,255,.85);transform:scale(1.02)}
+.btn-play::before{content:'▶';font-size:1rem}
+.btn-info{display:flex;align-items:center;gap:8px;background:rgba(109,109,110,.7);color:#fff;border:none;padding:.7rem 1.8rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s}
+.btn-info:hover{background:rgba(109,109,110,.5)}
+.btn-info::before{content:'ℹ';font-size:1rem}
+.hero-meta{display:flex;align-items:center;gap:1rem;margin-top:1.25rem}
+.hero-locality{font-size:.78rem;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase}
+.hero-dot{width:4px;height:4px;background:var(--muted);border-radius:50%}
+.hero-inf{font-size:.78rem;color:var(--muted)}
+
+/* ROWS */
+.rows-container{padding-top:0;position:relative;z-index:5}
+.row{margin-bottom:2.5vw}
+.row-header{display:flex;align-items:center;justify-content:space-between;padding:0 4vw;margin-bottom:.6rem}
+.row-title{font-size:1.05rem;font-weight:700;color:#fff;cursor:pointer;transition:color .2s}
+.row-title:hover{color:var(--blue)}
+.row-arrow{font-size:.75rem;color:var(--blue);margin-left:8px;opacity:0;transition:opacity .2s,transform .2s;display:inline-block}
+.row-title:hover .row-arrow{opacity:1;transform:translateX(4px)}
+.row-strip-wrap{position:relative}
+.row-strip{display:flex;gap:6px;overflow-x:auto;overflow-y:visible;padding:10px 4vw 14px;scroll-behavior:smooth;scrollbar-width:none}
+.row-strip::-webkit-scrollbar{display:none}
+.scroll-btn{position:absolute;top:0;bottom:0;width:4vw;background:rgba(10,10,15,.7);border:none;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;opacity:0;transition:opacity .2s}
+.row-strip-wrap:hover .scroll-btn{opacity:1}
+.scroll-btn.left{left:0;border-radius:0 4px 4px 0}
+.scroll-btn.right{right:0;border-radius:4px 0 0 4px}
+.scroll-btn:hover{background:rgba(10,10,15,.95)}
+
+/* VIDEO CARD */
+.vcard{flex-shrink:0;width:240px;border-radius:6px;overflow:visible;cursor:pointer;transition:transform .3s cubic-bezier(.4,0,.2,1);position:relative;z-index:1}
+.vcard:hover{transform:scale(1.22);z-index:50}
+.vcard-thumb{width:100%;aspect-ratio:16/9;background:var(--bg3);border-radius:6px;overflow:hidden;position:relative}
+.vcard-thumb iframe{width:100%;height:100%;border:none;display:block;pointer-events:none}
+.vcard-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);border-radius:6px;transition:opacity .3s}
+.vcard:hover .vcard-thumb::after{opacity:0}
+.vcard-info{background:var(--bg3);border-radius:0 0 6px 6px;padding:.75rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .3s ease,opacity .3s ease}
+.vcard:hover .vcard-info{max-height:200px;opacity:1}
+.vcard-actions{display:flex;gap:6px;margin-bottom:.6rem;align-items:center}
+.vcard-btn{width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:background .2s,border-color .2s;flex-shrink:0}
+.vcard-btn:hover{background:rgba(255,255,255,.15);border-color:#fff}
+.vcard-btn.play{background:#fff;color:#000;border-color:#fff;font-size:.7rem}
+.vcard-btn.more{margin-left:auto}
+.vcard-title{font-size:.78rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.45rem}
+.vcard-tags{display:flex;gap:4px;flex-wrap:wrap}
+.vcard-tag{font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:3px;background:rgba(74,158,255,.2);color:var(--blue)}
+.vcard-tag.locality{background:rgba(229,9,20,.2);color:#ff6b74}
+
+/* INFLUENCERS */
+.influencers-section{padding:2rem 4vw 3rem}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.section-title{font-size:1.05rem;font-weight:700;color:#fff}
+.section-title span{color:var(--blue)}
+.inf-grid{display:flex;gap:1.25rem;flex-wrap:wrap}
+.inf-card{display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform .25s;width:140px}
+.inf-card:hover{transform:scale(1.08)}
+.inf-ring{width:88px;height:88px;border-radius:50%;border:2.5px solid var(--blue);padding:3px;margin-bottom:.6rem}
+.inf-ring-inner{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900}
+.inf-card-name{font-size:.78rem;font-weight:600;color:#fff;text-align:center;line-height:1.3}
+.inf-card-sub{font-size:.68rem;color:var(--muted);margin-top:2px}
+
+/* FOOTER */
+footer{padding:3rem 4vw 2rem;border-top:1px solid var(--border);margin-top:3rem}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2rem}
+.footer-logo{font-size:1.4rem;font-weight:900;color:var(--blue);letter-spacing:-.5px;cursor:pointer;user-select:none}
+.footer-logo span{color:#fff}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{font-size:.75rem;color:rgba(255,255,255,.25);border-top:1px solid var(--border);padding-top:1.5rem}
+
+/* SUBMIT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:300;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:2.25rem;width:90%;max-width:440px;position:relative}
+.modal h3{font-size:1.3rem;font-weight:800;margin-bottom:1.25rem;color:var(--blue)}
+.modal label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.3rem;font-weight:600}
+.modal input,.modal select,.modal textarea{width:100%;background:var(--bg2);border:1px solid var(--border);color:#fff;padding:.65rem .85rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;margin-bottom:1rem;transition:border-color .2s}
+.modal input:focus,.modal select:focus,.modal textarea:focus{border-color:var(--blue)}
+.modal select option{background:var(--bg3)}
+.modal textarea{resize:vertical;min-height:75px}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.08);border:none;color:var(--muted);font-size:.9rem;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
+.modal-close:hover{background:rgba(255,255,255,.15);color:#fff}
+.modal-actions{display:flex;gap:.75rem}
+.btn-cancel{flex:1;padding:.65rem;border:1px solid var(--border);background:none;color:var(--muted);border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600}
+.btn-submit-modal{flex:2;padding:.65rem;border:none;background:var(--blue);color:#fff;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;transition:background .2s}
+.btn-submit-modal:hover{background:var(--blue2)}
+
+/* ADMIN LOGIN */
+.admin-screen{position:fixed;inset:0;background:rgba(5,5,10,.96);backdrop-filter:blur(10px);z-index:900;display:flex;align-items:center;justify-content:center}
+.admin-screen.hidden{display:none}
+.admin-login-box{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;width:90%;max-width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.admin-login-logo{font-size:1.8rem;font-weight:900;color:var(--blue);margin-bottom:.25rem;letter-spacing:-1px}
+.admin-login-logo span{color:#fff}
+.admin-login-sub{font-size:.8rem;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.al-label{display:block;font-size:.78rem;color:var(--muted);font-weight:600;text-align:left;margin-bottom:.3rem}
+.al-input{width:100%;background:var(--bg2);border:1px solid var(--border);color:#fff;padding:.7rem 1rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;margin-bottom:1rem;transition:border-color .2s}
+.al-input:focus{border-color:var(--blue)}
+.al-err{font-size:.78rem;color:#ff6b74;margin-bottom:.75rem;display:none;background:rgba(255,107,116,.1);padding:.5rem;border-radius:6px}
+.al-err.show{display:block}
+.al-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:.75rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s}
+.al-btn:hover{background:var(--blue2)}
+.al-close{background:none;border:none;color:var(--muted);font-size:.82rem;cursor:pointer;margin-top:1.25rem;display:block;width:100%;transition:color .2s}
+.al-close:hover{color:#fff}
+.al-reg-link{font-size:.78rem;color:var(--muted);margin-top:1rem}
+.al-reg-link a{color:var(--blue);cursor:pointer;text-decoration:none}
+.al-reg-link a:hover{text-decoration:underline}
+
+/* ADMIN PANEL */
+.admin-panel{position:fixed;inset:0;z-index:800;display:flex;background:rgba(5,5,10,.98)}
+.admin-panel.hidden{display:none}
+.adm-sidebar{width:250px;flex-shrink:0;background:#0d0d1a;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:1.25rem 0;overflow-y:auto}
+.adm-logo{font-size:1.2rem;font-weight:900;color:var(--blue);padding:0 1.25rem 1.25rem;letter-spacing:-.5px;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.adm-logo span{color:#fff}
+.adm-logo small{display:block;font-size:.65rem;font-weight:600;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.adm-nav-btn{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.25rem;background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:left;width:100%;border-left:3px solid transparent}
+.adm-nav-btn:hover{background:rgba(74,158,255,.08);color:#fff}
+.adm-nav-btn.active{background:rgba(74,158,255,.12);color:var(--blue);border-left-color:var(--blue)}
+.adm-nav-btn .adm-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.adm-sidebar-footer{margin-top:auto;padding:1.25rem;border-top:1px solid var(--border)}
+
+/* Publish button — the star of the show */
+.adm-publish-btn{width:100%;background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:#fff;border:none;padding:.8rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;transition:opacity .2s,transform .1s;margin-bottom:.6rem;display:flex;align-items:center;justify-content:center;gap:.5rem;letter-spacing:.3px}
+.adm-publish-btn:hover:not(:disabled){opacity:.9;transform:scale(1.01)}
+.adm-publish-btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.adm-publish-btn.publishing{background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%)}
+
+.adm-export-btn{width:100%;background:rgba(74,158,255,.15);color:var(--blue);border:1px solid rgba(74,158,255,.3);padding:.65rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:.6rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.adm-export-btn:hover{background:rgba(74,158,255,.25)}
+.adm-logout-btn{width:100%;background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border);padding:.6rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.adm-logout-btn:hover{background:rgba(255,107,116,.1);color:#ff6b74;border-color:rgba(255,107,116,.3)}
+.adm-publish-status{font-size:.72rem;color:var(--muted);text-align:center;margin-bottom:.5rem;min-height:16px}
+
+.adm-main{flex:1;overflow-y:auto;padding:2rem 2.5rem}
+.adm-tab{display:none}
+.adm-tab.active{display:block}
+.adm-tab-title{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+.adm-tab-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem}
+
+/* Admin form elements */
+.adm-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.adm-form-grid.one{grid-template-columns:1fr}
+.adm-field{margin-bottom:1rem}
+.adm-label{display:block;font-size:.78rem;color:var(--muted);font-weight:600;margin-bottom:.35rem}
+.adm-input,.adm-select,.adm-textarea{width:100%;background:var(--bg2);border:1px solid var(--border);color:#fff;padding:.65rem .85rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s}
+.adm-input:focus,.adm-select:focus,.adm-textarea:focus{border-color:var(--blue)}
+.adm-select option{background:var(--bg3)}
+.adm-textarea{resize:vertical;min-height:80px}
+.adm-save-btn{background:var(--blue);color:#fff;border:none;padding:.65rem 1.8rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .2s}
+.adm-save-btn:hover{background:var(--blue2)}
+.adm-danger-btn{background:rgba(255,107,116,.15);color:#ff6b74;border:1px solid rgba(255,107,116,.3);padding:.5rem 1rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s}
+.adm-danger-btn:hover{background:rgba(255,107,116,.25)}
+.adm-secondary-btn{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--border);padding:.5rem 1rem;border-radius:6px;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+.adm-secondary-btn:hover{background:rgba(255,255,255,.12)}
+.adm-thumb-preview{width:160px;height:90px;border-radius:6px;object-fit:cover;background:var(--bg2);border:1px solid var(--border);display:block;margin-top:.5rem}
+
+/* Video list */
+.adm-video-list{display:flex;flex-direction:column;gap:.6rem}
+.adm-video-item{display:flex;align-items:center;gap:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.75rem;transition:border-color .2s}
+.adm-video-item:hover{border-color:rgba(74,158,255,.4)}
+.adm-video-thumb{width:80px;height:45px;border-radius:4px;object-fit:cover;background:var(--bg2);flex-shrink:0}
+.adm-video-info{flex:1;min-width:0}
+.adm-video-title{font-size:.85rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-video-meta{font-size:.72rem;color:var(--muted);margin-top:2px}
+.adm-video-actions{display:flex;gap:.4rem;flex-shrink:0}
+
+/* Row list */
+.adm-row-list{display:flex;flex-direction:column;gap:.5rem}
+.adm-row-item{display:flex;align-items:center;gap:.75rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem}
+.adm-row-title-txt{flex:1;font-size:.88rem;font-weight:600;color:#fff}
+.adm-row-meta{font-size:.72rem;color:var(--muted)}
+
+/* Influencer list */
+.adm-inf-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+.adm-inf-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.adm-inf-av{width:48px;height:48px;border-radius:50%;margin:0 auto .5rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900}
+.adm-inf-name{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.adm-inf-handle{font-size:.7rem;color:var(--muted);margin-bottom:.6rem}
+.adm-inf-btns{display:flex;gap:.4rem;justify-content:center}
+
+/* Form overlays */
+.adm-form-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:850;display:none;align-items:center;justify-content:center}
+.adm-form-overlay.open{display:flex}
+.adm-form-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:2rem;width:90%;max-width:560px;max-height:90vh;overflow-y:auto;position:relative}
+.adm-form-title{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:1.5rem}
+.adm-form-actions{display:flex;gap:.6rem;margin-top:1.5rem;justify-content:flex-end}
+
+.adm-section{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.adm-section-title{font-size:.9rem;font-weight:700;color:var(--blue);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:.5rem}
+.adm-add-btn{display:flex;align-items:center;gap:.5rem;background:rgba(74,158,255,.12);color:var(--blue);border:1px dashed rgba(74,158,255,.4);padding:.6rem 1.2rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:1rem}
+.adm-add-btn:hover{background:rgba(74,158,255,.2);border-color:var(--blue)}
+
+/* GitHub connect box */
+.gh-connect-box{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.gh-connect-box.configured{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.4)}
+.gh-connect-title{font-size:.95rem;font-weight:800;color:#4ade80;margin-bottom:.35rem;display:flex;align-items:center;gap:.5rem}
+.gh-connect-sub{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:1.25rem;line-height:1.6}
+.gh-steps{font-size:.78rem;color:rgba(255,255,255,.5);line-height:2;padding-left:1rem;margin-bottom:1.25rem}
+.gh-steps li{list-style:decimal}
+.gh-steps code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:3px;font-family:monospace;color:rgba(255,255,255,.8)}
+.gh-status-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.gh-status-dot.off{background:#6b7280}
+.gh-configured-info{display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:rgba(255,255,255,.7);margin-bottom:1rem;background:rgba(34,197,94,.1);padding:.65rem 1rem;border-radius:8px}
+.gh-token-note{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.35rem;line-height:1.5}
+
+/* Users */
+.adm-user-item{display:flex;align-items:center;gap:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:.5rem}
+.adm-user-av{width:36px;height:36px;border-radius:50%;background:var(--blue3);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;color:var(--blue);flex-shrink:0}
+.adm-user-info{flex:1}
+.adm-user-name{font-size:.85rem;font-weight:700;color:#fff}
+.adm-user-email{font-size:.72rem;color:var(--muted)}
+.adm-badge{font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.5px}
+.adm-badge.admin{background:rgba(74,158,255,.2);color:var(--blue)}
+.adm-badge.user{background:rgba(170,170,204,.1);color:var(--muted)}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:#1a3a5c;color:#fff;padding:.75rem 1.5rem;border-radius:8px;font-size:.85rem;font-weight:600;z-index:2000;transition:transform .3s;border:1px solid rgba(74,158,255,.4);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.success{background:#14532d;border-color:rgba(34,197,94,.4);color:#86efac}
+.toast.error{background:#3a1a1c;border-color:rgba(255,107,116,.4);color:#ff9fa5}
+
+/* Spinner */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+
+@media(max-width:700px){
+  .nav-links{display:none}
+  .hero h1{font-size:1.8rem}
+  .vcard{width:155px}
+  .adm-sidebar{width:200px}
+  .adm-form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<script id="siteData" type="application/json">
+{
+  "settings":{
+    "siteName":"ReeltyHyd",
+    "tagline":"Curated real estate influencer videos for Hyderabad property buyers.",
+    "footerNote":"All videos belong to their respective creators · YouTube embeds used under YouTube standard embed policy",
+    "year":"2024"
+  },
+  "hero":{
+    "videoId":"dQw4w9WgXcQ",
+    "badge":"Featured Review",
+    "title":"Top Luxury Apartments\nin Gachibowli 2024",
+    "description":"Full site visit and honest review of Hyderabad's most sought-after luxury projects — by Realty King HYD.",
+    "locality":"Gachibowli",
+    "influencer":"Realty King HYD",
+    "meta":"Site Visit · Luxury · ₹1Cr+"
+  },
+  "rows":[
+    {"id":"r1","icon":"🔥","title":"Trending This Week","videos":[
+      {"id":"v1","videoId":"dQw4w9WgXcQ","title":"Luxury Apartments in Gachibowli — Full Site Visit & Review","locality":"gachibowli","influencer":"Realty King HYD","tags":["Luxury","₹1Cr+"]},
+      {"id":"v2","videoId":"dQw4w9WgXcQ","title":"Kokapet — Is It Still a Good Investment in 2024?","locality":"kokapet","influencer":"Hyd Property Talk","tags":["Investment","Analysis"]},
+      {"id":"v3","videoId":"dQw4w9WgXcQ","title":"Affordable 3BHK in Kondapur — Honest Review","locality":"kondapur","influencer":"PropSaathi","tags":["3BHK","Honest Review"]},
+      {"id":"v4","videoId":"dQw4w9WgXcQ","title":"Jubilee Hills Villas — Premium Living Guide","locality":"jubilee hills","influencer":"Luxury Homes HYD","tags":["Villa","Premium"]},
+      {"id":"v5","videoId":"dQw4w9WgXcQ","title":"Narsingi 2024: What NRIs Should Know","locality":"narsingi","influencer":"NRI Realty","tags":["NRI","Upcoming"]}
+    ]},
+    {"id":"r2","icon":"📍","title":"Gachibowli","videos":[
+      {"id":"v6","videoId":"dQw4w9WgXcQ","title":"Top 5 Gated Communities in Gachibowli","locality":"gachibowli","influencer":"Realty King HYD","tags":["Gated Community"]},
+      {"id":"v7","videoId":"dQw4w9WgXcQ","title":"Gachibowli vs Kondapur — Which is Better?","locality":"gachibowli","influencer":"Hyd Property Talk","tags":["Comparison"]},
+      {"id":"v8","videoId":"dQw4w9WgXcQ","title":"IT Corridor Flats: Gachibowli Walkthrough","locality":"gachibowli","influencer":"Realty King HYD","tags":["IT Corridor"]}
+    ]},
+    {"id":"r3","icon":"📍","title":"Kokapet & Narsingi","videos":[
+      {"id":"v9","videoId":"dQw4w9WgXcQ","title":"Kokapet: Financial District Living Review","locality":"kokapet","influencer":"PropSaathi","tags":["Financial District"]},
+      {"id":"v10","videoId":"dQw4w9WgXcQ","title":"Narsingi: Hidden Gem of Hyderabad?","locality":"narsingi","influencer":"NRI Realty","tags":["Upcoming"]},
+      {"id":"v11","videoId":"dQw4w9WgXcQ","title":"Kokapet Luxury Villas: Worth the Price?","locality":"kokapet","influencer":"Luxury Homes HYD","tags":["Villa","₹2Cr+"]}
+    ]},
+    {"id":"r4","icon":"💰","title":"Budget Picks Under ₹60L","videos":[
+      {"id":"v12","videoId":"dQw4w9WgXcQ","title":"Best 2BHK Flats Under ₹50L in Miyapur","locality":"miyapur","influencer":"Realty King HYD","tags":["Budget","2BHK"]},
+      {"id":"v13","videoId":"dQw4w9WgXcQ","title":"Kompally: Affordable Plots & Apartments","locality":"kompally","influencer":"PropSaathi","tags":["Plot","Affordable"]},
+      {"id":"v14","videoId":"dQw4w9WgXcQ","title":"Manikonda: Mid-Range Apartments Honest Review","locality":"manikonda","influencer":"Hyd Property Talk","tags":["Mid-range"]}
+    ]},
+    {"id":"r5","icon":"✈️","title":"NRI Investment Picks","videos":[
+      {"id":"v15","videoId":"dQw4w9WgXcQ","title":"NRI Guide: Buying Property in Hyderabad Remotely","locality":"multiple","influencer":"NRI Realty","tags":["NRI","Guide"]},
+      {"id":"v16","videoId":"dQw4w9WgXcQ","title":"Kokapet vs Gachibowli: NRI ROI Comparison","locality":"kokapet","influencer":"NRI Realty","tags":["NRI","ROI"]},
+      {"id":"v17","videoId":"dQw4w9WgXcQ","title":"Best Rental Yield Areas in Hyderabad","locality":"multiple","influencer":"Realty King HYD","tags":["Rental Yield"]}
+    ]}
+  ],
+  "influencers":[
+    {"id":"i1","initials":"RK","name":"Realty King HYD","handle":"@realtykingHYD","subscribers":"1.2L","color":"#4a9eff","bgColor":"rgba(74,158,255,0.15)","platforms":["yt","ig"]},
+    {"id":"i2","initials":"HP","name":"Hyd Property Talk","handle":"@hydpropertytalk","subscribers":"84K","color":"#ff6b74","bgColor":"rgba(255,107,116,0.12)","platforms":["yt","fb"]},
+    {"id":"i3","initials":"PS","name":"PropSaathi","handle":"@propsaathi","subscribers":"56K","color":"#4ecca3","bgColor":"rgba(78,204,163,0.12)","platforms":["yt","ig"]},
+    {"id":"i4","initials":"LH","name":"Luxury Homes HYD","handle":"@luxuryhomeshyd","subscribers":"42K","color":"#c084fc","bgColor":"rgba(192,132,252,0.12)","platforms":["yt","ig"]},
+    {"id":"i5","initials":"NR","name":"NRI Realty","handle":"@nrirealty_hyd","subscribers":"31K","color":"#60a5fa","bgColor":"rgba(96,165,250,0.12)","platforms":["yt"]}
+  ]
+}
+</script>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a class="nav-logo" id="navLogo" href="#" onclick="return false">Reelty<span>Hyd</span></a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#rowsContainer">Videos</a></li>
+    <li><a href="#infSection">Influencers</a></li>
+    <li><a href="#">New This Week</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-search-wrap">
+      <input type="text" id="searchInput" placeholder="Search localities, influencers…" oninput="handleSearch(this.value)"/>
+      <button>🔍</button>
+    </div>
+    <button class="btn-submit" onclick="openSubmitModal()">+ Submit</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="heroSection">
+  <div class="hero-bg-video">
+    <iframe id="heroIframe" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="hero-overlay-top"></div>
+  <div class="hero-overlay-left"></div>
+  <div class="hero-overlay-bottom"></div>
+  <div class="hero-content">
+    <div class="hero-badge" id="heroBadge"></div>
+    <h1 id="heroTitle"></h1>
+    <p id="heroDesc"></p>
+    <div class="hero-actions">
+      <button class="btn-play" id="heroPlayBtn">Play</button>
+      <button class="btn-info">More Info</button>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-locality" id="heroLocality"></span>
+      <span class="hero-dot"></span>
+      <span class="hero-inf" id="heroInfluencer"></span>
+      <span class="hero-dot"></span>
+      <span class="hero-inf" id="heroMeta"></span>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO ROWS -->
+<div class="rows-container" id="rowsContainer"></div>
+
+<!-- INFLUENCERS -->
+<section class="influencers-section" id="infSection">
+  <div class="section-header">
+    <span class="section-title">Top <span>Influencers</span></span>
+  </div>
+  <div class="inf-grid" id="infGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo" id="footerLogo">Reelty<span>Hyd</span></div>
+      <p id="footerTagline" style="font-size:.78rem;color:var(--muted);margin-top:.5rem;max-width:300px;line-height:1.6;"></p>
+    </div>
+    <div class="footer-links">
+      <a href="#">About</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a>
+      <a href="#">Advertise</a>
+      <a href="#" onclick="openSubmitModal();return false">Submit Influencer</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom" id="footerBottom"></div>
+</footer>
+
+<!-- SUBMIT MODAL -->
+<div class="modal-overlay" id="submitModal" onclick="if(event.target===this)closeSubmitModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeSubmitModal()">✕</button>
+    <h3>Submit an Influencer</h3>
+    <label>Channel Name</label><input type="text" placeholder="e.g. Realty King HYD"/>
+    <label>YouTube Channel URL</label><input type="text" placeholder="https://youtube.com/@..."/>
+    <label>Locality Focus</label>
+    <select>
+      <option>— Select —</option><option>Gachibowli</option><option>Kokapet</option>
+      <option>Kondapur</option><option>Jubilee Hills</option><option>Narsingi</option>
+      <option>Miyapur</option><option>Manikonda</option><option>Kompally</option>
+      <option>Multiple / All Hyderabad</option>
+    </select>
+    <label>Notes</label><textarea placeholder="Brief note about this creator…"></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeSubmitModal()">Cancel</button>
+      <button class="btn-submit-modal" onclick="alert('Thank you! Submission received.');closeSubmitModal()">Submit →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ADMIN LOGIN SCREEN
+════════════════════════════════════════ -->
+<div class="admin-screen hidden" id="adminLoginScreen">
+  <div class="admin-login-box">
+    <div class="admin-login-logo">Reelty<span>Hyd</span></div>
+    <div class="admin-login-sub" id="loginModeLabel">🔐 Admin Panel Login</div>
+
+    <div id="loginForm">
+      <label class="al-label">Username</label>
+      <input class="al-input" type="text" id="loginUser" placeholder="admin" autocomplete="off"/>
+      <label class="al-label">Password</label>
+      <input class="al-input" type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <div class="al-err" id="loginErr">Incorrect username or password.</div>
+      <button class="al-btn" onclick="doLogin()">Login to Admin Panel</button>
+      <div class="al-reg-link">New visitor? <a onclick="showRegForm()">Create an account</a></div>
+      <button class="al-close" onclick="hideAdminLogin()">← Back to Site</button>
+    </div>
+
+    <div id="regForm" style="display:none">
+      <label class="al-label">Full Name</label>
+      <input class="al-input" type="text" id="regName" placeholder="Your Name"/>
+      <label class="al-label">Email</label>
+      <input class="al-input" type="email" id="regEmail" placeholder="email@example.com"/>
+      <label class="al-label">Password</label>
+      <input class="al-input" type="password" id="regPass" placeholder="Min 6 characters"/>
+      <div class="al-err" id="regErr"></div>
+      <button class="al-btn" onclick="doRegister()">Create Account</button>
+      <div class="al-reg-link">Already have an account? <a onclick="showLoginForm()">Login</a></div>
+      <button class="al-close" onclick="hideAdminLogin()">← Back to Site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ADMIN PANEL
+════════════════════════════════════════ -->
+<div class="admin-panel hidden" id="adminPanel">
+
+  <div class="adm-sidebar">
+    <div class="adm-logo">Reelty<span>Hyd</span><small>Admin CMS</small></div>
+
+    <button class="adm-nav-btn active" onclick="showAdmTab('hero',this)"><span class="adm-icon">🎬</span>Hero Banner</button>
+    <button class="adm-nav-btn" onclick="showAdmTab('videos',this)"><span class="adm-icon">📹</span>Videos</button>
+    <button class="adm-nav-btn" onclick="showAdmTab('rows',this)"><span class="adm-icon">📋</span>Rows / Sections</button>
+    <button class="adm-nav-btn" onclick="showAdmTab('influencers',this)"><span class="adm-icon">👤</span>Influencers</button>
+    <button class="adm-nav-btn" onclick="showAdmTab('users',this)"><span class="adm-icon">🧑‍💼</span>Users</button>
+    <button class="adm-nav-btn" onclick="showAdmTab('settings',this)"><span class="adm-icon">⚙️</span>Settings</button>
+
+    <div class="adm-sidebar-footer">
+      <div class="adm-publish-status" id="publishStatus">Connect GitHub to publish live</div>
+      <button class="adm-publish-btn" id="publishBtn" onclick="publishToGitHub()">
+        🚀 Publish Live
+      </button>
+      <button class="adm-export-btn" onclick="exportSite()">⬇️ Download HTML</button>
+      <button class="adm-logout-btn" onclick="adminLogout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <div class="adm-main">
+
+    <!-- TAB: HERO -->
+    <div class="adm-tab active" id="tab-hero">
+      <div class="adm-tab-title">🎬 Hero Banner</div>
+      <div class="adm-tab-sub">Edit the large featured video shown at the top of the site.</div>
+      <div class="adm-section">
+        <div class="adm-section-title">Featured Video</div>
+        <div class="adm-form-grid">
+          <div class="adm-field">
+            <label class="adm-label">YouTube Video ID *</label>
+            <input class="adm-input" id="h_videoId" placeholder="e.g. dQw4w9WgXcQ" oninput="updateThumb('h_thumb',this.value)"/>
+            <small style="font-size:.7rem;color:var(--muted);display:block;margin-top:.35rem">From: youtube.com/watch?v=<b>VIDEO_ID_HERE</b></small>
+          </div>
+          <div class="adm-field">
+            <label class="adm-label">Thumbnail Preview</label>
+            <img class="adm-thumb-preview" id="h_thumb" src="" alt="Preview"/>
+          </div>
+        </div>
+        <div class="adm-form-grid">
+          <div class="adm-field"><label class="adm-label">Badge Text</label><input class="adm-input" id="h_badge" placeholder="e.g. Featured Review"/></div>
+          <div class="adm-field"><label class="adm-label">Locality Label</label><input class="adm-input" id="h_locality" placeholder="e.g. Gachibowli"/></div>
+        </div>
+        <div class="adm-field"><label class="adm-label">Title (use \n for line break)</label><textarea class="adm-textarea" id="h_title" rows="2"></textarea></div>
+        <div class="adm-field"><label class="adm-label">Description</label><textarea class="adm-textarea" id="h_desc"></textarea></div>
+        <div class="adm-form-grid">
+          <div class="adm-field"><label class="adm-label">Influencer Name</label><input class="adm-input" id="h_influencer"/></div>
+          <div class="adm-field"><label class="adm-label">Meta Tags</label><input class="adm-input" id="h_meta" placeholder="e.g. Site Visit · Luxury · ₹1Cr+"/></div>
+        </div>
+        <button class="adm-save-btn" onclick="saveHero()">✓ Save Hero</button>
+      </div>
+    </div>
+
+    <!-- TAB: VIDEOS -->
+    <div class="adm-tab" id="tab-videos">
+      <div class="adm-tab-title">📹 Videos</div>
+      <div class="adm-tab-sub">Add, edit, or remove video cards from any row.</div>
+      <button class="adm-add-btn" onclick="openVideoForm()">＋ Add New Video</button>
+      <div class="adm-video-list" id="adminVideoList"></div>
+    </div>
+
+    <!-- TAB: ROWS -->
+    <div class="adm-tab" id="tab-rows">
+      <div class="adm-tab-title">📋 Rows / Sections</div>
+      <div class="adm-tab-sub">Manage the horizontal video rows shown on the site.</div>
+      <button class="adm-add-btn" onclick="openRowForm()">＋ Add New Row</button>
+      <div class="adm-row-list" id="adminRowList"></div>
+    </div>
+
+    <!-- TAB: INFLUENCERS -->
+    <div class="adm-tab" id="tab-influencers">
+      <div class="adm-tab-title">👤 Influencers</div>
+      <div class="adm-tab-sub">Manage influencer profile cards shown in the directory.</div>
+      <button class="adm-add-btn" onclick="openInfForm()">＋ Add Influencer</button>
+      <div class="adm-inf-list" id="adminInfList"></div>
+    </div>
+
+    <!-- TAB: USERS -->
+    <div class="adm-tab" id="tab-users">
+      <div class="adm-tab-title">🧑‍💼 Registered Users</div>
+      <div class="adm-tab-sub">Users who have registered via the site.</div>
+      <div id="adminUserList"></div>
+    </div>
+
+    <!-- TAB: SETTINGS -->
+    <div class="adm-tab" id="tab-settings">
+      <div class="adm-tab-title">⚙️ Settings</div>
+      <div class="adm-tab-sub">Configure GitHub publishing, site info, and admin password.</div>
+
+      <!-- GITHUB CONNECT -->
+      <div class="gh-connect-box" id="ghConnectBox">
+        <div class="gh-connect-title"><span class="gh-status-dot off" id="ghDot"></span>🐙 GitHub Live Publishing</div>
+        <div class="gh-connect-sub">Connect your GitHub repository so the <b>🚀 Publish Live</b> button updates your website for all visitors instantly — no downloading or uploading needed.</div>
+
+        <ol class="gh-steps">
+          <li>Go to <code>github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</code></li>
+          <li>Click <code>Generate new token</code>, give it a name like "ReeltyHyd"</li>
+          <li>Check the <code>repo</code> checkbox (full repository access)</li>
+          <li>Click <code>Generate token</code> and copy it below</li>
+        </ol>
+
+        <div id="ghConfiguredInfo" style="display:none" class="gh-configured-info">
+          <span class="gh-status-dot"></span>
+          <span id="ghConfiguredText">Connected</span>
+          <button class="adm-danger-btn" style="margin-left:auto;padding:.3rem .7rem;font-size:.7rem" onclick="disconnectGitHub()">Disconnect</button>
+        </div>
+
+        <div id="ghSetupForm">
+          <div class="adm-form-grid">
+            <div class="adm-field">
+              <label class="adm-label">GitHub Username</label>
+              <input class="adm-input" id="gh_user" placeholder="e.g. yourname"/>
+            </div>
+            <div class="adm-field">
+              <label class="adm-label">Repository Name</label>
+              <input class="adm-input" id="gh_repo" placeholder="e.g. reeltyhyd"/>
+            </div>
+          </div>
+          <div class="adm-field">
+            <label class="adm-label">Branch</label>
+            <input class="adm-input" id="gh_branch" placeholder="main" value="main" style="max-width:120px"/>
+          </div>
+          <div class="adm-field">
+            <label class="adm-label">Personal Access Token (PAT)</label>
+            <input class="adm-input" type="password" id="gh_token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+            <div class="gh-token-note">🔒 Stored only in your browser (localStorage). Never shared with anyone except GitHub.</div>
+          </div>
+          <button class="adm-save-btn" onclick="saveGitHubConfig()">✓ Connect GitHub</button>
+        </div>
+      </div>
+
+      <!-- SITE INFO -->
+      <div class="adm-section">
+        <div class="adm-section-title">Site Information</div>
+        <div class="adm-field"><label class="adm-label">Site Name</label><input class="adm-input" id="s_name"/></div>
+        <div class="adm-field"><label class="adm-label">Tagline (footer)</label><textarea class="adm-textarea" id="s_tagline" rows="2"></textarea></div>
+        <div class="adm-field"><label class="adm-label">Footer Note</label><textarea class="adm-textarea" id="s_footer" rows="2"></textarea></div>
+        <div class="adm-field"><label class="adm-label">Year</label><input class="adm-input" id="s_year" style="max-width:120px"/></div>
+        <button class="adm-save-btn" onclick="saveSettings()">✓ Save Settings</button>
+      </div>
+
+      <!-- PASSWORD CHANGE -->
+      <div class="adm-section">
+        <div class="adm-section-title">Change Admin Password</div>
+        <div class="adm-form-grid">
+          <div class="adm-field"><label class="adm-label">Current Password</label><input class="adm-input" type="password" id="p_current"/></div>
+          <div class="adm-field"><label class="adm-label">New Password</label><input class="adm-input" type="password" id="p_new"/></div>
+        </div>
+        <button class="adm-save-btn" onclick="changePassword()">✓ Change Password</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FORM OVERLAYS -->
+<!-- Video Form -->
+<div class="adm-form-overlay" id="videoFormOverlay" onclick="if(event.target===this)closeVideoForm()">
+  <div class="adm-form-box">
+    <div class="adm-form-title" id="videoFormTitle">Add New Video</div>
+    <input type="hidden" id="vf_id"/>
+    <div class="adm-form-grid">
+      <div class="adm-field">
+        <label class="adm-label">YouTube Video ID *</label>
+        <input class="adm-input" id="vf_videoId" placeholder="e.g. dQw4w9WgXcQ" oninput="updateThumb('vf_thumb',this.value)"/>
+        <small style="font-size:.7rem;color:var(--muted);display:block;margin-top:.3rem">From: youtube.com/watch?v=<b>THIS_PART</b></small>
+      </div>
+      <div class="adm-field"><label class="adm-label">Thumbnail Preview</label><img class="adm-thumb-preview" id="vf_thumb" src="" alt=""/></div>
+    </div>
+    <div class="adm-field"><label class="adm-label">Video Title *</label><input class="adm-input" id="vf_title" placeholder="Descriptive title for this video"/></div>
+    <div class="adm-form-grid">
+      <div class="adm-field"><label class="adm-label">Row / Section *</label><select class="adm-select" id="vf_row"></select></div>
+      <div class="adm-field">
+        <label class="adm-label">Locality</label>
+        <select class="adm-select" id="vf_locality">
+          <option value="multiple">Multiple / All HYD</option>
+          <option value="gachibowli">Gachibowli</option><option value="kokapet">Kokapet</option>
+          <option value="kondapur">Kondapur</option><option value="jubilee hills">Jubilee Hills</option>
+          <option value="narsingi">Narsingi</option><option value="miyapur">Miyapur</option>
+          <option value="manikonda">Manikonda</option><option value="kompally">Kompally</option>
+        </select>
+      </div>
+    </div>
+    <div class="adm-form-grid">
+      <div class="adm-field"><label class="adm-label">Influencer Name</label><input class="adm-input" id="vf_influencer" placeholder="e.g. Realty King HYD"/></div>
+      <div class="adm-field"><label class="adm-label">Tags (comma separated)</label><input class="adm-input" id="vf_tags" placeholder="e.g. Luxury, ₹1Cr+, Site Visit"/></div>
+    </div>
+    <div class="adm-form-actions">
+      <button class="adm-secondary-btn" onclick="closeVideoForm()">Cancel</button>
+      <button class="adm-save-btn" onclick="saveVideoForm()">✓ Save Video</button>
+    </div>
+  </div>
+</div>
+
+<!-- Row Form -->
+<div class="adm-form-overlay" id="rowFormOverlay" onclick="if(event.target===this)closeRowForm()">
+  <div class="adm-form-box" style="max-width:400px">
+    <div class="adm-form-title" id="rowFormTitle">Add New Row</div>
+    <input type="hidden" id="rf_id"/>
+    <div class="adm-field"><label class="adm-label">Icon / Emoji</label><input class="adm-input" id="rf_icon" placeholder="e.g. 📍" maxlength="4" style="max-width:100px"/></div>
+    <div class="adm-field"><label class="adm-label">Row Title *</label><input class="adm-input" id="rf_title" placeholder="e.g. Gachibowli"/></div>
+    <div class="adm-form-actions">
+      <button class="adm-secondary-btn" onclick="closeRowForm()">Cancel</button>
+      <button class="adm-save-btn" onclick="saveRowForm()">✓ Save Row</button>
+    </div>
+  </div>
+</div>
+
+<!-- Influencer Form -->
+<div class="adm-form-overlay" id="infFormOverlay" onclick="if(event.target===this)closeInfForm()">
+  <div class="adm-form-box" style="max-width:480px">
+    <div class="adm-form-title" id="infFormTitle">Add Influencer</div>
+    <input type="hidden" id="if_id"/>
+    <div class="adm-form-grid">
+      <div class="adm-field"><label class="adm-label">Initials (2 letters)</label><input class="adm-input" id="if_initials" placeholder="RK" maxlength="2" style="max-width:80px;text-transform:uppercase"/></div>
+      <div class="adm-field"><label class="adm-label">Avatar Color</label><input class="adm-input" type="color" id="if_color" value="#4a9eff" style="max-width:80px;height:40px;padding:.25rem"/></div>
+    </div>
+    <div class="adm-field"><label class="adm-label">Channel Name *</label><input class="adm-input" id="if_name" placeholder="e.g. Realty King HYD"/></div>
+    <div class="adm-form-grid">
+      <div class="adm-field"><label class="adm-label">Handle</label><input class="adm-input" id="if_handle" placeholder="@realtykingHYD"/></div>
+      <div class="adm-field"><label class="adm-label">Subscribers</label><input class="adm-input" id="if_subs" placeholder="e.g. 1.2L or 84K"/></div>
+    </div>
+    <div class="adm-field">
+      <label class="adm-label">Platforms</label>
+      <div style="display:flex;gap:1rem;margin-top:.4rem">
+        <label style="font-size:.82rem;color:var(--muted);cursor:pointer"><input type="checkbox" id="if_yt" style="margin-right:4px;accent-color:var(--blue)"/> YouTube</label>
+        <label style="font-size:.82rem;color:var(--muted);cursor:pointer"><input type="checkbox" id="if_ig" style="margin-right:4px;accent-color:var(--blue)"/> Instagram</label>
+        <label style="font-size:.82rem;color:var(--muted);cursor:pointer"><input type="checkbox" id="if_fb" style="margin-right:4px;accent-color:var(--blue)"/> Facebook</label>
+      </div>
+    </div>
+    <div class="adm-form-actions">
+      <button class="adm-secondary-btn" onclick="closeInfForm()">Cancel</button>
+      <button class="adm-save-btn" onclick="saveInfForm()">✓ Save Influencer</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+/* ── DATA ─────────────────────────────────────────── */
+let DATA = {};
+let ADMIN_CREDS = { u:'admin', p:'reelty2024' };
+
+function initData() {
+  try {
+    DATA = JSON.parse(document.getElementById('siteData').textContent);
+    const saved = localStorage.getItem('rh_data');
+    if (saved) DATA = JSON.parse(saved);
+    const creds = localStorage.getItem('rh_creds');
+    if (creds) ADMIN_CREDS = JSON.parse(creds);
+  } catch(e) { console.error('Data init error', e); }
+}
+
+function saveData() { localStorage.setItem('rh_data', JSON.stringify(DATA)); }
+
+/* ── RENDER ───────────────────────────────────────── */
+function renderAll() { renderHero(); renderRows(); renderInfluencers(); renderSiteSettings(); }
+
+function renderHero() {
+  const h = DATA.hero;
+  document.getElementById('heroIframe').src =
+    `https://www.youtube.com/embed/${h.videoId}?autoplay=1&mute=1&loop=1&controls=0&disablekb=1&rel=0&playlist=${h.videoId}`;
+  document.getElementById('heroBadge').textContent    = h.badge;
+  document.getElementById('heroTitle').innerHTML      = h.title.replace(/\\n/g,'<br/>');
+  document.getElementById('heroDesc').textContent     = h.description;
+  document.getElementById('heroLocality').textContent = h.locality;
+  document.getElementById('heroInfluencer').textContent = h.influencer;
+  document.getElementById('heroMeta').textContent     = h.meta;
+  document.getElementById('heroPlayBtn').onclick = () =>
+    window.open('https://youtube.com/watch?v=' + h.videoId, '_blank');
+}
+
+function renderRows() {
+  const c = document.getElementById('rowsContainer');
+  c.innerHTML = '';
+  DATA.rows.forEach(row => {
+    const d = document.createElement('div');
+    d.className = 'row'; d.dataset.rowId = row.id;
+    d.innerHTML = `
+      <div class="row-header">
+        <span class="row-title">${row.icon} ${row.title} <span class="row-arrow">›</span></span>
+        <span style="font-size:.72rem;color:var(--muted)">${row.videos.length} videos</span>
+      </div>
+      <div class="row-strip-wrap">
+        <button class="scroll-btn left" onclick="scrollRow(this,-1)">‹</button>
+        <div class="row-strip">${row.videos.map(makeVCard).join('')}</div>
+        <button class="scroll-btn right" onclick="scrollRow(this,1)">›</button>
+      </div>`;
+    c.appendChild(d);
+  });
+}
+
+function makeVCard(v) {
+  const tags = v.tags.map(t=>`<span class="vcard-tag">${t}</span>`).join('');
+  return `<div class="vcard" data-locality="${v.locality}" data-title="${v.title.toLowerCase()}" data-vid="${v.id}">
+    <div class="vcard-thumb">
+      <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="vcard-info">
+      <div class="vcard-actions">
+        <button class="vcard-btn play" onclick="window.open('https://youtube.com/watch?v=${v.videoId}','_blank')">▶</button>
+        <button class="vcard-btn">+</button><button class="vcard-btn more">⌄</button>
+      </div>
+      <div class="vcard-title">${v.title}</div>
+      <div class="vcard-tags"><span class="vcard-tag locality">${v.locality}</span>${tags}</div>
+    </div>
+  </div>`;
+}
+
+function renderInfluencers() {
+  document.getElementById('infGrid').innerHTML =
+    DATA.influencers.map(i=>`
+      <div class="inf-card">
+        <div class="inf-ring" style="border-color:${i.color}">
+          <div class="inf-ring-inner" style="background:${i.bgColor};color:${i.color}">${i.initials}</div>
+        </div>
+        <div class="inf-card-name">${i.name}</div>
+        <div class="inf-card-sub">${i.subscribers} subs</div>
+      </div>`).join('') +
+    `<div class="inf-card" onclick="openSubmitModal()">
+      <div class="inf-ring" style="border-color:rgba(255,255,255,.2);border-style:dashed">
+        <div class="inf-ring-inner" style="background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);font-size:1.8rem">+</div>
+      </div>
+      <div class="inf-card-name" style="color:var(--muted)">Add Creator</div>
+      <div class="inf-card-sub">Submit</div>
+    </div>`;
+}
+
+function renderSiteSettings() {
+  const s = DATA.settings;
+  document.title = s.siteName + ' — Hyderabad Real Estate Influencers';
+  document.getElementById('footerTagline').textContent = s.tagline;
+  document.getElementById('footerBottom').textContent = '© ' + s.year + ' ' + s.siteName + ' · ' + s.footerNote;
+}
+
+/* ── SITE INTERACTIONS ────────────────────────────── */
+window.addEventListener('scroll', () =>
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60));
+
+function scrollRow(btn, dir) {
+  btn.closest('.row-strip-wrap').querySelector('.row-strip').scrollBy({left:dir*700,behavior:'smooth'});
+}
+
+function handleSearch(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.vcard').forEach(c => {
+    const match = !q || (c.dataset.title||'').includes(q) || (c.dataset.locality||'').includes(q);
+    c.style.opacity = match ? '1' : '0.2';
+  });
+}
+
+function openSubmitModal()  { document.getElementById('submitModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeSubmitModal() { document.getElementById('submitModal').classList.remove('open'); document.body.style.overflow=''; }
+
+/* ── ADMIN ACCESS ─────────────────────────────────── */
+let logoClicks=0, logoTimer;
+document.getElementById('navLogo').addEventListener('click', e => {
+  e.preventDefault(); logoClicks++;
+  clearTimeout(logoTimer);
+  logoTimer = setTimeout(()=>logoClicks=0, 2000);
+  if (logoClicks>=5) { logoClicks=0; showAdminLogin(); }
+});
+document.getElementById('footerLogo').addEventListener('click', showAdminLogin);
+window.addEventListener('hashchange', () => {
+  if (window.location.hash==='#adminlogin') showAdminLogin();
+});
+if (window.location.hash==='#adminlogin') setTimeout(showAdminLogin, 300);
+
+/* ── ADMIN AUTH ───────────────────────────────────── */
+function showAdminLogin() {
+  if (localStorage.getItem('rh_session')==='active') { showAdminPanel(); return; }
+  showLoginForm();
+  document.getElementById('adminLoginScreen').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+}
+function hideAdminLogin() {
+  document.getElementById('adminLoginScreen').classList.add('hidden');
+  document.body.style.overflow='';
+  history.replaceState(null,'',window.location.pathname);
+}
+function showLoginForm() {
+  document.getElementById('loginForm').style.display='block';
+  document.getElementById('regForm').style.display='none';
+  document.getElementById('loginModeLabel').textContent='🔐 Admin Panel Login';
+  document.getElementById('loginErr').classList.remove('show');
+}
+function showRegForm() {
+  document.getElementById('loginForm').style.display='none';
+  document.getElementById('regForm').style.display='block';
+  document.getElementById('loginModeLabel').textContent='👤 Create Account';
+  document.getElementById('regErr').classList.remove('show');
+}
+function doLogin() {
+  const u=document.getElementById('loginUser').value.trim();
+  const p=document.getElementById('loginPass').value;
+  if (u===ADMIN_CREDS.u && p===ADMIN_CREDS.p) {
+    localStorage.setItem('rh_session','active');
+    hideAdminLogin(); showAdminPanel();
+  } else {
+    document.getElementById('loginErr').classList.add('show');
+    document.getElementById('loginPass').value='';
+  }
+}
+function doRegister() {
+  const name=document.getElementById('regName').value.trim();
+  const email=document.getElementById('regEmail').value.trim();
+  const pass=document.getElementById('regPass').value;
+  const err=document.getElementById('regErr');
+  if (!name||!email||pass.length<6) {
+    err.textContent='Please fill all fields. Password must be 6+ characters.';
+    err.classList.add('show'); return;
+  }
+  const users=JSON.parse(localStorage.getItem('rh_users')||'[]');
+  if (users.find(u=>u.email===email)) {
+    err.textContent='Email already registered.'; err.classList.add('show'); return;
+  }
+  users.push({id:'u'+Date.now(),name,email,pass,role:'user',joined:new Date().toLocaleDateString()});
+  localStorage.setItem('rh_users',JSON.stringify(users));
+  alert('Account created! You can now login with your credentials.');
+  showLoginForm();
+}
+function showAdminPanel() {
+  document.getElementById('adminPanel').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+  loadAdmHeroTab();
+  updateGitHubUI();
+}
+function adminLogout() {
+  localStorage.removeItem('rh_session');
+  document.getElementById('adminPanel').classList.add('hidden');
+  document.body.style.overflow='';
+  showToast('Logged out successfully.');
+}
+
+/* ── ADMIN TABS ───────────────────────────────────── */
+function showAdmTab(name, btn) {
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.adm-nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  const fns = {hero:loadAdmHeroTab,videos:loadAdmVideosTab,rows:loadAdmRowsTab,
+               influencers:loadAdmInfTab,users:loadAdmUsersTab,settings:loadAdmSettingsTab};
+  if (fns[name]) fns[name]();
+}
+
+/* ── HERO TAB ─────────────────────────────────────── */
+function loadAdmHeroTab() {
+  const h=DATA.hero;
+  document.getElementById('h_videoId').value   =h.videoId;
+  document.getElementById('h_badge').value     =h.badge;
+  document.getElementById('h_title').value     =h.title;
+  document.getElementById('h_desc').value      =h.description;
+  document.getElementById('h_locality').value  =h.locality;
+  document.getElementById('h_influencer').value=h.influencer;
+  document.getElementById('h_meta').value      =h.meta;
+  updateThumb('h_thumb',h.videoId);
+}
+function saveHero() {
+  DATA.hero={
+    videoId:document.getElementById('h_videoId').value.trim(),
+    badge:document.getElementById('h_badge').value.trim(),
+    title:document.getElementById('h_title').value.trim(),
+    description:document.getElementById('h_desc').value.trim(),
+    locality:document.getElementById('h_locality').value.trim(),
+    influencer:document.getElementById('h_influencer').value.trim(),
+    meta:document.getElementById('h_meta').value.trim()
+  };
+  saveData(); renderHero(); showToast('✓ Hero updated!','success');
+}
+
+/* ── VIDEOS TAB ───────────────────────────────────── */
+function loadAdmVideosTab() {
+  const list=document.getElementById('adminVideoList');
+  list.innerHTML='';
+  DATA.rows.forEach(row=>{
+    row.videos.forEach(v=>{
+      const div=document.createElement('div');
+      div.className='adm-video-item';
+      div.innerHTML=`
+        <img class="adm-video-thumb" src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg" alt="" onerror="this.style.background='var(--bg3)'"/>
+        <div class="adm-video-info">
+          <div class="adm-video-title">${v.title}</div>
+          <div class="adm-video-meta">${row.icon} ${row.title} · ${v.locality} · ${v.influencer||'—'}</div>
+        </div>
+        <div class="adm-video-actions">
+          <button class="adm-secondary-btn" onclick="openVideoForm('${v.id}')">✏️ Edit</button>
+          <button class="adm-danger-btn" onclick="deleteVideo('${v.id}')">🗑️</button>
+        </div>`;
+      list.appendChild(div);
+    });
+  });
+  if (!list.children.length)
+    list.innerHTML='<p style="color:var(--muted);font-size:.85rem">No videos yet. Click Add New Video.</p>';
+}
+
+function openVideoForm(vid) {
+  const sel=document.getElementById('vf_row');
+  sel.innerHTML=DATA.rows.map(r=>`<option value="${r.id}">${r.icon} ${r.title}</option>`).join('');
+  if (vid) {
+    document.getElementById('videoFormTitle').textContent='✏️ Edit Video';
+    const {video,row}=findVideoById(vid);
+    document.getElementById('vf_id').value         =video.id;
+    document.getElementById('vf_videoId').value    =video.videoId;
+    document.getElementById('vf_title').value      =video.title;
+    document.getElementById('vf_locality').value   =video.locality;
+    document.getElementById('vf_influencer').value =video.influencer;
+    document.getElementById('vf_tags').value       =video.tags.join(', ');
+    sel.value=row.id; updateThumb('vf_thumb',video.videoId);
+  } else {
+    document.getElementById('videoFormTitle').textContent='＋ Add New Video';
+    document.getElementById('vf_id').value='';
+    ['vf_videoId','vf_title','vf_influencer','vf_tags'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('vf_locality').value='multiple';
+    document.getElementById('vf_thumb').src='';
+  }
+  document.getElementById('videoFormOverlay').classList.add('open');
+}
+function closeVideoForm() { document.getElementById('videoFormOverlay').classList.remove('open'); }
+
+function saveVideoForm() {
+  const vid=document.getElementById('vf_id').value;
+  const rowId=document.getElementById('vf_row').value;
+  const obj={
+    id:vid||'v'+Date.now(),
+    videoId:document.getElementById('vf_videoId').value.trim(),
+    title:document.getElementById('vf_title').value.trim(),
+    locality:document.getElementById('vf_locality').value,
+    influencer:document.getElementById('vf_influencer').value.trim(),
+    tags:document.getElementById('vf_tags').value.split(',').map(t=>t.trim()).filter(Boolean)
+  };
+  if (!obj.videoId||!obj.title) { showToast('Video ID and Title are required.','error'); return; }
+  if (vid) DATA.rows.forEach(r=>{r.videos=r.videos.filter(v=>v.id!==vid);});
+  const targetRow=DATA.rows.find(r=>r.id===rowId);
+  if (targetRow) {
+    if (vid) { const i=targetRow.videos.findIndex(v=>v.id===vid); if(i>=0) targetRow.videos[i]=obj; else targetRow.videos.push(obj); }
+    else targetRow.videos.push(obj);
+  }
+  saveData(); renderRows(); closeVideoForm(); loadAdmVideosTab();
+  showToast(vid?'✓ Video updated!':'✓ Video added!','success');
+}
+
+function deleteVideo(vid) {
+  if (!confirm('Delete this video?')) return;
+  DATA.rows.forEach(r=>{r.videos=r.videos.filter(v=>v.id!==vid);});
+  saveData(); renderRows(); loadAdmVideosTab();
+  showToast('Video removed.');
+}
+
+/* ── ROWS TAB ─────────────────────────────────────── */
+function loadAdmRowsTab() {
+  const list=document.getElementById('adminRowList');
+  list.innerHTML='';
+  DATA.rows.forEach((row,idx)=>{
+    const div=document.createElement('div'); div.className='adm-row-item';
+    div.innerHTML=`<span style="font-size:1.2rem">${row.icon}</span>
+      <span class="adm-row-title-txt">${row.title}</span>
+      <span class="adm-row-meta">${row.videos.length} videos</span>
+      <div style="display:flex;gap:.4rem">
+        ${idx>0?`<button class="adm-secondary-btn" onclick="moveRow('${row.id}',-1)">↑</button>`:''}
+        ${idx<DATA.rows.length-1?`<button class="adm-secondary-btn" onclick="moveRow('${row.id}',1)">↓</button>`:''}
+        <button class="adm-secondary-btn" onclick="openRowForm('${row.id}')">✏️</button>
+        <button class="adm-danger-btn" onclick="deleteRow('${row.id}')">🗑️</button>
+      </div>`;
+    list.appendChild(div);
+  });
+}
+function openRowForm(rid) {
+  if (rid) {
+    const row=DATA.rows.find(r=>r.id===rid);
+    document.getElementById('rowFormTitle').textContent='✏️ Rename Row';
+    document.getElementById('rf_id').value=row.id;
+    document.getElementById('rf_icon').value=row.icon;
+    document.getElementById('rf_title').value=row.title;
+  } else {
+    document.getElementById('rowFormTitle').textContent='＋ Add New Row';
+    ['rf_id','rf_title'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('rf_icon').value='📍';
+  }
+  document.getElementById('rowFormOverlay').classList.add('open');
+}
+function closeRowForm() { document.getElementById('rowFormOverlay').classList.remove('open'); }
+function saveRowForm() {
+  const rid=document.getElementById('rf_id').value;
+  const icon=document.getElementById('rf_icon').value.trim()||'📍';
+  const title=document.getElementById('rf_title').value.trim();
+  if (!title) { showToast('Row title is required.','error'); return; }
+  if (rid) { const row=DATA.rows.find(r=>r.id===rid); if(row){row.icon=icon;row.title=title;} }
+  else DATA.rows.push({id:'r'+Date.now(),icon,title,videos:[]});
+  saveData(); renderRows(); closeRowForm(); loadAdmRowsTab();
+  showToast(rid?'✓ Row updated!':'✓ Row added!','success');
+}
+function moveRow(rid, dir) {
+  const i=DATA.rows.findIndex(r=>r.id===rid), ni=i+dir;
+  if (ni<0||ni>=DATA.rows.length) return;
+  [DATA.rows[i],DATA.rows[ni]]=[DATA.rows[ni],DATA.rows[i]];
+  saveData(); renderRows(); loadAdmRowsTab();
+}
+function deleteRow(rid) {
+  const row=DATA.rows.find(r=>r.id===rid);
+  if (!confirm(`Delete row "${row?.title}" and all its ${row?.videos.length} videos?`)) return;
+  DATA.rows=DATA.rows.filter(r=>r.id!==rid);
+  saveData(); renderRows(); loadAdmRowsTab(); showToast('Row deleted.');
+}
+
+/* ── INFLUENCERS TAB ──────────────────────────────── */
+function loadAdmInfTab() {
+  document.getElementById('adminInfList').innerHTML =
+    DATA.influencers.map(inf=>`
+      <div class="adm-inf-item">
+        <div class="adm-inf-av" style="background:${inf.bgColor};color:${inf.color}">${inf.initials}</div>
+        <div class="adm-inf-name">${inf.name}</div>
+        <div class="adm-inf-handle">${inf.handle} · ${inf.subscribers}</div>
+        <div class="adm-inf-btns">
+          <button class="adm-secondary-btn" onclick="openInfForm('${inf.id}')">✏️</button>
+          <button class="adm-danger-btn" onclick="deleteInf('${inf.id}')">🗑️</button>
+        </div>
+      </div>`).join('') || '<p style="color:var(--muted);font-size:.85rem">No influencers yet.</p>';
+}
+function openInfForm(iid) {
+  if (iid) {
+    const inf=DATA.influencers.find(i=>i.id===iid);
+    document.getElementById('infFormTitle').textContent='✏️ Edit Influencer';
+    document.getElementById('if_id').value=inf.id;
+    document.getElementById('if_initials').value=inf.initials;
+    document.getElementById('if_color').value=inf.color;
+    document.getElementById('if_name').value=inf.name;
+    document.getElementById('if_handle').value=inf.handle;
+    document.getElementById('if_subs').value=inf.subscribers;
+    ['yt','ig','fb'].forEach(p=>document.getElementById('if_'+p).checked=inf.platforms.includes(p));
+  } else {
+    document.getElementById('infFormTitle').textContent='＋ Add Influencer';
+    document.getElementById('if_id').value='';
+    ['if_initials','if_name','if_handle','if_subs'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('if_color').value='#4a9eff';
+    ['yt','ig','fb'].forEach(p=>document.getElementById('if_'+p).checked=false);
+  }
+  document.getElementById('infFormOverlay').classList.add('open');
+}
+function closeInfForm() { document.getElementById('infFormOverlay').classList.remove('open'); }
+function saveInfForm() {
+  const iid=document.getElementById('if_id').value;
+  const clr=document.getElementById('if_color').value;
+  const obj={
+    id:iid||'i'+Date.now(),
+    initials:document.getElementById('if_initials').value.trim().toUpperCase().slice(0,2),
+    color:clr, bgColor:clr+'22',
+    name:document.getElementById('if_name').value.trim(),
+    handle:document.getElementById('if_handle').value.trim(),
+    subscribers:document.getElementById('if_subs').value.trim(),
+    platforms:['yt','ig','fb'].filter(p=>document.getElementById('if_'+p).checked)
+  };
+  if (!obj.name) { showToast('Channel name is required.','error'); return; }
+  if (iid) { const i=DATA.influencers.findIndex(x=>x.id===iid); if(i>=0) DATA.influencers[i]=obj; }
+  else DATA.influencers.push(obj);
+  saveData(); renderInfluencers(); closeInfForm(); loadAdmInfTab();
+  showToast(iid?'✓ Influencer updated!':'✓ Influencer added!','success');
+}
+function deleteInf(iid) {
+  if (!confirm('Remove this influencer?')) return;
+  DATA.influencers=DATA.influencers.filter(i=>i.id!==iid);
+  saveData(); renderInfluencers(); loadAdmInfTab(); showToast('Influencer removed.');
+}
+
+/* ── USERS TAB ────────────────────────────────────── */
+function loadAdmUsersTab() {
+  const list=document.getElementById('adminUserList');
+  const users=JSON.parse(localStorage.getItem('rh_users')||'[]');
+  list.innerHTML=`<div class="adm-user-item">
+    <div class="adm-user-av">A</div>
+    <div class="adm-user-info"><div class="adm-user-name">${ADMIN_CREDS.u}</div><div class="adm-user-email">Admin account</div></div>
+    <span class="adm-badge admin">Admin</span>
+  </div>` + users.map(u=>`<div class="adm-user-item">
+    <div class="adm-user-av" style="background:rgba(74,158,255,.1);color:var(--blue)">${(u.name||'U')[0].toUpperCase()}</div>
+    <div class="adm-user-info"><div class="adm-user-name">${u.name}</div><div class="adm-user-email">${u.email} · Joined ${u.joined}</div></div>
+    <div style="display:flex;gap:.4rem;align-items:center">
+      <span class="adm-badge user">User</span>
+      <button class="adm-danger-btn" onclick="deleteUser('${u.id}')">🗑️</button>
+    </div>
+  </div>`).join('');
+  if (!users.length)
+    list.innerHTML+='<p style="color:var(--muted);font-size:.82rem;margin-top:.75rem">No registered users yet.</p>';
+}
+function deleteUser(uid) {
+  if (!confirm('Delete this user?')) return;
+  const users=JSON.parse(localStorage.getItem('rh_users')||'[]').filter(u=>u.id!==uid);
+  localStorage.setItem('rh_users',JSON.stringify(users)); loadAdmUsersTab(); showToast('User deleted.');
+}
+
+/* ── SETTINGS TAB ─────────────────────────────────── */
+function loadAdmSettingsTab() {
+  const s=DATA.settings;
+  document.getElementById('s_name').value   =s.siteName;
+  document.getElementById('s_tagline').value=s.tagline;
+  document.getElementById('s_footer').value =s.footerNote;
+  document.getElementById('s_year').value   =s.year;
+  updateGitHubUI();
+}
+function saveSettings() {
+  DATA.settings={
+    siteName:document.getElementById('s_name').value.trim(),
+    tagline:document.getElementById('s_tagline').value.trim(),
+    footerNote:document.getElementById('s_footer').value.trim(),
+    year:document.getElementById('s_year').value.trim()
+  };
+  saveData(); renderSiteSettings(); showToast('✓ Settings saved!','success');
+}
+function changePassword() {
+  const cur=document.getElementById('p_current').value;
+  const nw=document.getElementById('p_new').value;
+  if (cur!==ADMIN_CREDS.p) { showToast('Current password is incorrect.','error'); return; }
+  if (nw.length<6)         { showToast('New password must be 6+ characters.','error'); return; }
+  ADMIN_CREDS.p=nw;
+  localStorage.setItem('rh_creds',JSON.stringify(ADMIN_CREDS));
+  document.getElementById('p_current').value='';
+  document.getElementById('p_new').value='';
+  showToast('✓ Password changed!','success');
+}
+
+/* ── GITHUB CONFIG ────────────────────────────────── */
+function saveGitHubConfig() {
+  const u=document.getElementById('gh_user').value.trim();
+  const r=document.getElementById('gh_repo').value.trim();
+  const b=document.getElementById('gh_branch').value.trim()||'main';
+  const t=document.getElementById('gh_token').value.trim();
+  if (!u||!r||!t) { showToast('Please fill all GitHub fields.','error'); return; }
+  localStorage.setItem('rh_gh',JSON.stringify({user:u,repo:r,branch:b,token:t}));
+  updateGitHubUI();
+  showToast('✓ GitHub connected! Ready to publish live.','success');
+}
+
+function disconnectGitHub() {
+  if (!confirm('Disconnect GitHub? You can reconnect anytime.')) return;
+  localStorage.removeItem('rh_gh');
+  updateGitHubUI();
+  showToast('GitHub disconnected.');
+}
+
+function updateGitHubUI() {
+  const cfg=JSON.parse(localStorage.getItem('rh_gh')||'null');
+  const box=document.getElementById('ghConnectBox');
+  const dot=document.getElementById('ghDot');
+  const infoDiv=document.getElementById('ghConfiguredInfo');
+  const setupForm=document.getElementById('ghSetupForm');
+  const pubBtn=document.getElementById('publishBtn');
+  const pubStatus=document.getElementById('publishStatus');
+
+  if (cfg) {
+    box.classList.add('configured');
+    dot.classList.remove('off');
+    infoDiv.style.display='flex';
+    document.getElementById('ghConfiguredText').textContent =
+      `Connected: ${cfg.user}/${cfg.repo} (${cfg.branch})`;
+    setupForm.style.display='none';
+    pubBtn.disabled=false;
+    pubStatus.textContent='✓ GitHub connected — ready to publish';
+    pubStatus.style.color='#4ade80';
+  } else {
+    box.classList.remove('configured');
+    dot.classList.add('off');
+    infoDiv.style.display='none';
+    setupForm.style.display='block';
+    pubBtn.disabled=true;
+    pubStatus.textContent='Connect GitHub to publish live';
+    pubStatus.style.color='';
+  }
+}
+
+/* ── PUBLISH TO GITHUB ────────────────────────────── */
+async function publishToGitHub() {
+  const cfg=JSON.parse(localStorage.getItem('rh_gh')||'null');
+  if (!cfg) { showToast('Please connect GitHub first in Settings.','error'); return; }
+
+  const btn=document.getElementById('publishBtn');
+  const status=document.getElementById('publishStatus');
+  btn.disabled=true;
+  btn.classList.add('publishing');
+  btn.innerHTML='<span class="spinner"></span> Publishing…';
+  status.textContent='Contacting GitHub…';
+
+  try {
+    const apiBase=`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/index.html`;
+    const headers={'Authorization':'token '+cfg.token,'Content-Type':'application/json'};
+
+    // Step 1 — get current file SHA
+    status.textContent='Getting current file…';
+    const getRes=await fetch(apiBase+'?ref='+cfg.branch,{headers});
+    if (!getRes.ok) {
+      const e=await getRes.json();
+      throw new Error(e.message||'Could not fetch file from GitHub.');
+    }
+    const fileData=await getRes.json();
+    const sha=fileData.sha;
+
+    // Step 2 — generate HTML with updated data
+    status.textContent='Preparing updated site…';
+    document.getElementById('siteData').textContent=JSON.stringify(DATA,null,2);
+
+    const adminPanel=document.getElementById('adminPanel');
+    const loginScreen=document.getElementById('adminLoginScreen');
+    const toast=document.getElementById('toast');
+    adminPanel.classList.add('hidden');
+    loginScreen.classList.add('hidden');
+    toast.style.visibility='hidden';
+
+    const htmlContent='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+
+    adminPanel.classList.remove('hidden');
+    toast.style.visibility='';
+
+    // Step 3 — base64 encode
+    const encoded=btoa(unescape(encodeURIComponent(htmlContent)));
+
+    // Step 4 — commit
+    status.textContent='Pushing to GitHub…';
+    const putRes=await fetch(apiBase,{
+      method:'PUT', headers,
+      body:JSON.stringify({
+        message:'✨ Update site via ReeltyHyd Admin — '+new Date().toLocaleString(),
+        content:encoded,
+        sha:sha,
+        branch:cfg.branch
+      })
+    });
+
+    if (putRes.ok) {
+      status.textContent='✅ Published! Live in ~60 seconds.';
+      status.style.color='#4ade80';
+      showToast('🚀 Published! Site is updating on GitHub Pages now.','success');
+    } else {
+      const e=await putRes.json();
+      throw new Error(e.message||'Publish failed.');
+    }
+  } catch(err) {
+    status.textContent='❌ Error: '+err.message;
+    status.style.color='#ff6b74';
+    showToast('Publish failed: '+err.message,'error');
+  } finally {
+    btn.disabled=false;
+    btn.classList.remove('publishing');
+    btn.innerHTML='🚀 Publish Live';
+    if (!localStorage.getItem('rh_gh')) btn.disabled=true;
+    setTimeout(()=>{ updateGitHubUI(); },5000);
+  }
+}
+
+/* ── HELPERS ──────────────────────────────────────── */
+function updateThumb(imgId, videoId) {
+  document.getElementById(imgId).src = videoId
+    ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg` : '';
+}
+function findVideoById(vid) {
+  for (const row of DATA.rows) {
+    const video=row.videos.find(v=>v.id===vid);
+    if (video) return {video,row};
+  }
+  return {video:null,row:null};
+}
+
+let toastTimer;
+function showToast(msg, type) {
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast'+(type?' '+type:'');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+/* ── EXPORT (download only, no publish) ───────────── */
+function exportSite() {
+  document.getElementById('siteData').textContent=JSON.stringify(DATA,null,2);
+  const panel=document.getElementById('adminPanel');
+  const login=document.getElementById('adminLoginScreen');
+  const toast=document.getElementById('toast');
+  panel.classList.add('hidden'); login.classList.add('hidden');
+  toast.style.visibility='hidden';
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  panel.classList.remove('hidden'); toast.style.visibility='';
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='index.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(a.href);
+  showToast('✓ HTML downloaded.','success');
+}
+
+/* ── INIT ─────────────────────────────────────────── */
+initData();
+renderAll();
+</script>
+</body>
+</html>
